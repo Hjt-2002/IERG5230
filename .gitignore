@@ -15,3 +15,10 @@ har_initial/certs/
 *.out
 *.synctex.gz
 *.toc
+
+/IERG5230_midterm/
+/IERG5230_proposal/
+/*.pdf
+/*.pptx
+/*.docx
+/*.zip
