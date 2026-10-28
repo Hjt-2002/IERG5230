@@ -1,0 +1,72 @@
+\section{Objectives}
+\label{sec:objectives}
+
+The project has an information-processing half and a networking half. The
+information-processing half is the phrase on the phone and the check on the
+laptop. The networking half is the decision of when that check is allowed
+to occupy the uplink. Table~\ref{tab:objectives} lists the objectives and
+the midterm status of each one.
+
+\begin{table}[t]
+\caption{Objectives and midterm status}
+\label{tab:objectives}
+\centering
+\footnotesize
+\begin{tabular}{p{0.72\columnwidth}c}
+\toprule
+Objective & Status \\
+\midrule
+Write an English action phrase on the phone before any picture is uploaded &
+Done \\
+Keep the picture on the phone when the phrase is confident and still matches the ongoing action &
+Done \\
+Let the laptop write its own phrase and compare the two phrases by text cosine &
+Done \\
+Check a short causal clip of the last three frames when the local test fails &
+Done \\
+Score free phrases on 60 still images and on three-frame UCF101 and HMDB51 clips &
+Done \\
+Predict checker latency, set a per-frame uplink budget, and schedule several phones &
+Planned \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The first objective is a phrase, not a class identifier. The phone model
+must finish generation, and the page must show the phrase, without waiting
+for the laptop. The confidence attached to that phrase is the minimum
+probability of the new tokens, so a single uncertain token can force a
+check.
+
+The second objective is the upload gate. A high confidence is not enough on
+its own once an action is already on screen. The new phrase must also stay
+close to that action. The picture is the payload that this gate can
+suppress. The phrase itself may still be sent, because the text encoder
+runs on the laptop.
+
+The third objective replaces the proposal's bank caption. The laptop model
+writes a free phrase. Agreement is the cosine of the two phrase embeddings.
+The screen keeps the model's words. A class sentence is introduced only in
+the evaluation, where a free phrase has to be counted against a label.
+
+The fourth objective keeps the check causal and short. The phone reads the
+newest frame. The laptop, and only the laptop, may read the last three
+frames, captured about one second apart and uploaded in time order. The
+system does not wait for a future frame, and it does not claim a
+ten-second clip.
+
+The fifth objective is a measurement that can be repeated. The models are
+not trained on either sample. The still-image check scores one free phrase
+against 15 class sentences. The video check replays the live rule on three
+frames from each clip in the UCF101 recognition test list and the HMDB51
+test list. Those frames are taken around the middle of the clip. The
+replay therefore scores the gate, the quiet skip, and the phrase, and it
+does not score the start or the end of an action.
+
+The sixth objective is unchanged from the proposal and is not met at this
+midterm. Before an upload, the laptop should predict how long the checker
+will take, subtract that time from the confirmation deadline, and turn the
+remainder into an uplink budget. When several phones ask for a check at
+once, the earliest uplink deadline should go first. The November work is
+to collect the traces, train the predictor, and compare that rule with
+round-robin and with a static budget.

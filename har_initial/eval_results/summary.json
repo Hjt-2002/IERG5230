@@ -1,0 +1,430 @@
+{
+  "dataset": "Bingsu/Human_Action_Recognition",
+  "split": "train",
+  "reason": "The published test split labels are placeholders.",
+  "samples": 60,
+  "seed": 0,
+  "device": "cuda",
+  "smol_model": "HuggingFaceTB/SmolVLM-256M-Instruct",
+  "qwen_model": "Qwen/Qwen3.5-2B",
+  "qwen_max_pixels": 200704,
+  "threshold": 0.5,
+  "matcher": {
+    "method": "cosine",
+    "embed_model": "BAAI/bge-small-en-v1.5",
+    "text": "Each phrase is matched to the nearest class activity sentence."
+  },
+  "smolvlm": {
+    "correct": 38,
+    "total": 60,
+    "accuracy": 0.6333,
+    "per_class": {
+      "calling": {
+        "correct": 4,
+        "total": 4
+      },
+      "clapping": {
+        "correct": 2,
+        "total": 4
+      },
+      "cycling": {
+        "correct": 3,
+        "total": 4
+      },
+      "dancing": {
+        "correct": 2,
+        "total": 4
+      },
+      "drinking": {
+        "correct": 3,
+        "total": 4
+      },
+      "eating": {
+        "correct": 4,
+        "total": 4
+      },
+      "fighting": {
+        "correct": 2,
+        "total": 4
+      },
+      "hugging": {
+        "correct": 2,
+        "total": 4
+      },
+      "laughing": {
+        "correct": 3,
+        "total": 4
+      },
+      "listening_to_music": {
+        "correct": 2,
+        "total": 4
+      },
+      "running": {
+        "correct": 4,
+        "total": 4
+      },
+      "sitting": {
+        "correct": 2,
+        "total": 4
+      },
+      "sleeping": {
+        "correct": 3,
+        "total": 4
+      },
+      "texting": {
+        "correct": 1,
+        "total": 4
+      },
+      "using_laptop": {
+        "correct": 1,
+        "total": 4
+      }
+    }
+  },
+  "qwen": {
+    "correct": 40,
+    "total": 60,
+    "accuracy": 0.6667,
+    "per_class": {
+      "calling": {
+        "correct": 1,
+        "total": 4
+      },
+      "clapping": {
+        "correct": 3,
+        "total": 4
+      },
+      "cycling": {
+        "correct": 4,
+        "total": 4
+      },
+      "dancing": {
+        "correct": 1,
+        "total": 4
+      },
+      "drinking": {
+        "correct": 4,
+        "total": 4
+      },
+      "eating": {
+        "correct": 3,
+        "total": 4
+      },
+      "fighting": {
+        "correct": 3,
+        "total": 4
+      },
+      "hugging": {
+        "correct": 4,
+        "total": 4
+      },
+      "laughing": {
+        "correct": 3,
+        "total": 4
+      },
+      "listening_to_music": {
+        "correct": 2,
+        "total": 4
+      },
+      "running": {
+        "correct": 4,
+        "total": 4
+      },
+      "sitting": {
+        "correct": 2,
+        "total": 4
+      },
+      "sleeping": {
+        "correct": 4,
+        "total": 4
+      },
+      "texting": {
+        "correct": 1,
+        "total": 4
+      },
+      "using_laptop": {
+        "correct": 1,
+        "total": 4
+      }
+    }
+  },
+  "mixed": {
+    "correct": 41,
+    "total": 60,
+    "accuracy": 0.6833,
+    "per_class": {
+      "calling": {
+        "correct": 4,
+        "total": 4
+      },
+      "clapping": {
+        "correct": 3,
+        "total": 4
+      },
+      "cycling": {
+        "correct": 4,
+        "total": 4
+      },
+      "dancing": {
+        "correct": 2,
+        "total": 4
+      },
+      "drinking": {
+        "correct": 3,
+        "total": 4
+      },
+      "eating": {
+        "correct": 4,
+        "total": 4
+      },
+      "fighting": {
+        "correct": 3,
+        "total": 4
+      },
+      "hugging": {
+        "correct": 3,
+        "total": 4
+      },
+      "laughing": {
+        "correct": 2,
+        "total": 4
+      },
+      "listening_to_music": {
+        "correct": 2,
+        "total": 4
+      },
+      "running": {
+        "correct": 4,
+        "total": 4
+      },
+      "sitting": {
+        "correct": 2,
+        "total": 4
+      },
+      "sleeping": {
+        "correct": 3,
+        "total": 4
+      },
+      "texting": {
+        "correct": 1,
+        "total": 4
+      },
+      "using_laptop": {
+        "correct": 1,
+        "total": 4
+      }
+    },
+    "routed_to_qwen": 26,
+    "routed_rate": 0.4333
+  },
+  "mixed_thresholds": {
+    "0.3": {
+      "correct": 42,
+      "total": 60,
+      "accuracy": 0.7,
+      "per_class": {
+        "calling": {
+          "correct": 4,
+          "total": 4
+        },
+        "clapping": {
+          "correct": 3,
+          "total": 4
+        },
+        "cycling": {
+          "correct": 4,
+          "total": 4
+        },
+        "dancing": {
+          "correct": 2,
+          "total": 4
+        },
+        "drinking": {
+          "correct": 3,
+          "total": 4
+        },
+        "eating": {
+          "correct": 4,
+          "total": 4
+        },
+        "fighting": {
+          "correct": 2,
+          "total": 4
+        },
+        "hugging": {
+          "correct": 3,
+          "total": 4
+        },
+        "laughing": {
+          "correct": 3,
+          "total": 4
+        },
+        "listening_to_music": {
+          "correct": 2,
+          "total": 4
+        },
+        "running": {
+          "correct": 4,
+          "total": 4
+        },
+        "sitting": {
+          "correct": 2,
+          "total": 4
+        },
+        "sleeping": {
+          "correct": 3,
+          "total": 4
+        },
+        "texting": {
+          "correct": 1,
+          "total": 4
+        },
+        "using_laptop": {
+          "correct": 2,
+          "total": 4
+        }
+      },
+      "routed_to_qwen": 12,
+      "routed_rate": 0.2
+    },
+    "0.5": {
+      "correct": 41,
+      "total": 60,
+      "accuracy": 0.6833,
+      "per_class": {
+        "calling": {
+          "correct": 4,
+          "total": 4
+        },
+        "clapping": {
+          "correct": 3,
+          "total": 4
+        },
+        "cycling": {
+          "correct": 4,
+          "total": 4
+        },
+        "dancing": {
+          "correct": 2,
+          "total": 4
+        },
+        "drinking": {
+          "correct": 3,
+          "total": 4
+        },
+        "eating": {
+          "correct": 4,
+          "total": 4
+        },
+        "fighting": {
+          "correct": 3,
+          "total": 4
+        },
+        "hugging": {
+          "correct": 3,
+          "total": 4
+        },
+        "laughing": {
+          "correct": 2,
+          "total": 4
+        },
+        "listening_to_music": {
+          "correct": 2,
+          "total": 4
+        },
+        "running": {
+          "correct": 4,
+          "total": 4
+        },
+        "sitting": {
+          "correct": 2,
+          "total": 4
+        },
+        "sleeping": {
+          "correct": 3,
+          "total": 4
+        },
+        "texting": {
+          "correct": 1,
+          "total": 4
+        },
+        "using_laptop": {
+          "correct": 1,
+          "total": 4
+        }
+      },
+      "routed_to_qwen": 26,
+      "routed_rate": 0.4333
+    },
+    "0.7": {
+      "correct": 43,
+      "total": 60,
+      "accuracy": 0.7167,
+      "per_class": {
+        "calling": {
+          "correct": 3,
+          "total": 4
+        },
+        "clapping": {
+          "correct": 3,
+          "total": 4
+        },
+        "cycling": {
+          "correct": 4,
+          "total": 4
+        },
+        "dancing": {
+          "correct": 2,
+          "total": 4
+        },
+        "drinking": {
+          "correct": 4,
+          "total": 4
+        },
+        "eating": {
+          "correct": 4,
+          "total": 4
+        },
+        "fighting": {
+          "correct": 3,
+          "total": 4
+        },
+        "hugging": {
+          "correct": 4,
+          "total": 4
+        },
+        "laughing": {
+          "correct": 3,
+          "total": 4
+        },
+        "listening_to_music": {
+          "correct": 2,
+          "total": 4
+        },
+        "running": {
+          "correct": 4,
+          "total": 4
+        },
+        "sitting": {
+          "correct": 2,
+          "total": 4
+        },
+        "sleeping": {
+          "correct": 3,
+          "total": 4
+        },
+        "texting": {
+          "correct": 1,
+          "total": 4
+        },
+        "using_laptop": {
+          "correct": 1,
+          "total": 4
+        }
+      },
+      "routed_to_qwen": 41,
+      "routed_rate": 0.6833
+    }
+  },
+  "per_class": 4
+}

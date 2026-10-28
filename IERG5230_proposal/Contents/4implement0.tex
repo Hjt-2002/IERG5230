@@ -1,0 +1,93 @@
+\section{Implementation}
+
+\subsection{Platform}
+
+The sensing client is an iPhone. A lightweight activity-description model
+runs locally on the phone and produces the draft caption without network
+communication. The activity sentence bank and the embeddings required by the
+draft stage are also stored locally.
+
+Frames selected for verification are JPEG-encoded and sent through Wi-Fi to
+a laptop edge server. The server is implemented using FastAPI and runs
+SmolVLM-256M-Instruct as the verification model.
+
+Before transmitting a full verification image, the iPhone sends a small
+request containing the planned JPEG size and the confirmation deadline. The
+laptop records its current CPU utilization and recent VLM execution latency,
+predicts the verification time, computes the communication budget, and places
+the request in the upload scheduler.
+
+The scheduler returns an application-layer grant to the selected phone. The
+phone then uploads the JPEG, the laptop performs VLM verification, and the
+accept-or-rewrite result is returned to the phone.
+
+This design requires no modification to the Wi-Fi MAC or access point and can
+therefore be implemented entirely at the application layer.
+
+\subsection{What is Already Running}
+
+The current desktop prototype already implements the draft-and-verify logic.
+For each frame it produces a draft caption, the top candidate sentences, the
+confidence margin, the VLM output, and the accept-or-rewrite decision.
+
+The next implementation step is to move the lightweight draft stage onto the
+iPhone while retaining SmolVLM verification on the laptop. We will then add
+timestamped Wi-Fi measurements and collect VLM latency traces under different
+CPU loads and image configurations.
+
+These traces will be used to train the edge-latency predictor and to evaluate
+the compute-aware communication scheduler.
+
+\subsection{Evaluation}
+
+We will record short sessions of one person performing the behaviors included
+in the activity sentence bank. The iPhone and laptop will operate on the same
+Wi-Fi network.
+
+For the AI pipeline, we will report:
+\begin{itemize}
+\item local draft latency;
+\item fraction of drafts accepted and rewritten;
+\item agreement between the local draft and VLM verification;
+\item human assessment of the final caption on a small labeled subset.
+\end{itemize}
+
+For the system component, we will report:
+\begin{itemize}
+\item uplink, edge-compute, and downlink latency;
+\item prediction error of $\hat T_i^{\mathrm{edge}}$;
+\item end-to-end confirmation deadline-satisfaction ratio;
+\item bytes uploaded per minute;
+\item confirmation latency as the number of simultaneous clients increases.
+\end{itemize}
+
+We will evaluate three communication schedulers:
+\begin{enumerate}
+\item \emph{Round robin}: verification uploads are served without considering
+their deadlines or compute latency;
+\item \emph{Static budget}: communication deadlines are derived using a fixed
+average VLM latency;
+\item \emph{Predictive budget}: communication deadlines are dynamically
+derived using the predicted VLM latency.
+\end{enumerate}
+
+Separately, the draft-and-verify pipeline will be compared with local draft
+only and VLM verification on every frame. This allows the effect of the AI
+pipeline and the effect of the communication scheduler to be evaluated
+independently.
+
+\subsection{Roles}
+
+Both members will integrate the final demo, evaluation, and report.
+
+One member will focus on the AI pipeline, including the local draft model,
+activity sentence bank, acceptance rule, VLM verification, and caption-quality
+evaluation.
+
+The other member will focus on VLM latency profiling, edge-latency prediction,
+communication-budget allocation, application-layer scheduling, and the
+multi-client evaluation.
+
+The draft-and-verify mechanism forms the information-processing core of the
+project, while predictive deadline-aware communication forms the system and
+networking core.

@@ -1,0 +1,207 @@
+\section{Design}
+\label{sec:design}
+
+Figure~\ref{fig:framework} is the path that is running. A quiet frame keeps
+the phrase and skips the phone model. Otherwise the phone writes and shows
+a phrase before any picture leaves the device. The sentence crosses the
+Wi-Fi link for a semantic check. The JPEG follows immediately when token
+confidence is low, and only on a second frame when a confident phrase has
+left the ongoing action. The latency predictor and the upload scheduler
+are not on this figure.
+
+\subsection{Local phrase and confidence}
+
+SmolVLM-256M-Instruct runs in the phone browser at 4-bit. For a frame
+$x_i$ it writes a phrase $s_i$ and a probability $p_{i,t}$ for each new
+token. The confidence is the weakest of those probabilities,
+\begin{equation}
+\label{eq:kappa}
+\kappa_i = \min_t p_{i,t}.
+\end{equation}
+The phrase is shown when local generation finishes. It does not wait for
+the laptop. An empty phrase has confidence missing and is treated as
+unsafe. The phone prompt asks for a short action phrase and nothing else,
+so the later cosine compares two phrases of the same kind.
+
+\subsection{When the picture stays on the phone}
+
+Let $a$ be the phrase of the action that is already on screen, and let
+$\tau_{\mathrm{u}}$ and $\tau_{\mathrm{s}}$ be the confidence and cosine
+thresholds. The JPEG stays on the phone when the local phrase is confident
+and still close to that action:
+\begin{equation}
+\label{eq:keep}
+\kappa_i \ge \tau_{\mathrm{u}}
+\quad\text{and}\quad
+\cos\big(f_T(s_i), f_T(a)\big) \ge \tau_{\mathrm{s}}.
+\end{equation}
+The defaults in the prototype are $\tau_{\mathrm{u}}=0.5$ and
+$\tau_{\mathrm{s}}=0.70$. The text encoder $f_T$ is
+\texttt{bge-small-en-v1.5}, running on the laptop CPU so the GPU remains
+available for Qwen \cite{xiao2024cpack}. An empty phrase scores 0. The
+first confident phrase of a session starts the action. There is no $a$ yet,
+so only the confidence test applies, and the picture is not uploaded.
+
+The cosine in \eqref{eq:keep} is computed on the laptop. A confident live
+frame therefore still sends the phrase. It does not send the JPEG. One
+failure of that cosine test increments a leave count and keeps $a$. The
+buffered frames are uploaded only when the count reaches 2. The count
+returns to 0 when the phrases match, when Qwen returns a decision, and at
+the start of a new action. One-shot capture and a file upload do not use
+the action state, the leave count, or the quiet-frame test. They compare
+$s_i$ with the laptop phrase only.
+
+\subsection{Quiet frames}
+
+Before SmolVLM runs, the live page scales the current JPEG to a
+\(32\times 32\) grayscale image \(g_i\). The distance from the previous
+live frame is the mean absolute difference
+\begin{equation}
+\label{eq:mad}
+d_i
+=
+\frac{1}{1024}
+\sum_{u=1}^{32}
+\sum_{v=1}^{32}
+\left|g_i(u,v)-g_{i-1}(u,v)\right|.
+\end{equation}
+SmolVLM is skipped, and \(a\) stays on screen, when an action is already
+set, the leave count is 0, and \(d_i<10\). A frame that is waiting for a
+second mismatch is not treated as quiet, so a pending leave is not erased
+by a small pixel change. The first frame of a session has no previous
+image and always reaches the model. The same threshold and the same
+\(32\times 32\) signature are used by the video replay.
+
+\input{Contents/framework}
+
+\subsection{Three-frame check}
+
+Live mode stores one JPEG per second and keeps the last three. SmolVLM is
+invoked on the newest frame only, and only when \eqref{eq:mad} does not
+skip it. While it runs, newer captures replace the buffer and are not
+queued behind the frame already in inference. The upload uses those frames
+in time order. It happens on the current frame when $\kappa_i$ is missing
+or below $\tau_{\mathrm{u}}$. It happens on a confident frame only after
+two cosine failures. Qwen3.5-2B then writes one phrase $q_i$ for the frames
+it receives. The prompt states that the frames are about one second apart.
+A single uploaded frame uses the same short-action prompt as the phone.
+
+The ongoing phrase $a$ is kept when $q_i$ is close to it. Otherwise the
+screen uses $s_i$ when $q_i$ is close to $s_i$ or when $q_i$ is empty, and
+uses $q_i$ when the two phrases disagree:
+\begin{equation}
+\label{eq:fuse}
+a^{+} =
+\begin{cases}
+a & \text{if } a\neq\emptyset \text{ and } \cos(f_T(q_i),f_T(a))\ge\tau_{\mathrm{s}},\\
+s_i & \text{if } q_i=\emptyset \text{ or } \cos(f_T(s_i),f_T(q_i))\ge\tau_{\mathrm{s}},\\
+q_i & \text{otherwise.}
+\end{cases}
+\end{equation}
+A kept action does not reset its start time. A replaced action starts at
+the newest frame. Algorithm~\ref{alg:live} is the live procedure.
+
+\begin{algorithm}[t]
+\caption{Live phrase with a quiet skip and a two-frame leave}
+\label{alg:live}
+\begin{algorithmic}[1]
+\STATE Keep the last three JPEGs, one captured per second.
+\STATE Compute \(d_i\) in \eqref{eq:mad}. Let \(\ell\) be the leave count.
+\IF{\(a\) is set and \(\ell=0\) and \(d_i<10\)}
+    \STATE Keep \(a\) and skip SmolVLM.
+\ELSE
+    \STATE Run 4-bit SmolVLM on the newest frame and display \(s_i\).
+    \STATE \(\kappa_i\leftarrow\min_t p_{i,t}\).
+    \IF{\(\kappa_i<\tau_{\mathrm{u}}\) or \(\kappa_i\) is missing}
+        \STATE Upload the buffered frames, oldest first.
+    \ELSIF{\(a\) is unset}
+        \STATE Start \(a\) from \(s_i\). Do not upload.
+    \ELSIF{\(\cos(f_T(s_i),f_T(a))\ge\tau_{\mathrm{s}}\)}
+        \STATE Keep \(a\) and set \(\ell\leftarrow 0\).
+    \ELSE
+        \STATE \(\ell\leftarrow\ell+1\).
+        \IF{\(\ell<2\)}
+            \STATE Keep \(a\). Do not upload.
+        \ELSE
+            \STATE Upload the buffered frames, oldest first.
+        \ENDIF
+    \ENDIF
+\ENDIF
+\IF{frames were uploaded}
+    \STATE Qwen writes \(q_i\) and apply \eqref{eq:fuse}.
+    \STATE Set \(\ell\leftarrow 0\).
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
+The phone model still reads one still image. Three frames are joint input
+only for Qwen, and only after the local check fails. The vision encoder of
+SmolVLM resizes its input and emits a fixed image-token sequence, so
+stitching the three frames into one JPEG would shrink each frame instead of
+adding time. The update period is the phone generation time. On the
+development phone with WebGPU that time is under three seconds, so actions
+shorter than the period can fall between updates. This is not per-frame
+online detection and not a Kinetics evaluation.
+
+\subsection{Upload control still to be built}
+
+The sentence that appears first is local,
+$T_i^{\mathrm{draft}}=T_i^{\mathrm{local}}$,
+where $T_i^{\mathrm{local}}$ is the SmolVLM time on the phone. A frame that
+fails \eqref{eq:keep} also waits for a checked phrase. Its confirmation
+delay is
+\begin{equation}
+\label{eq:conf}
+T_i^{\mathrm{conf}}
+=
+T_i^{\mathrm{wait}}
++
+T_i^{\mathrm{up}}
++
+T_i^{\mathrm{edge}}
++
+T_i^{\mathrm{down}},
+\end{equation}
+where $T_i^{\mathrm{wait}}$ is the time until an upload grant,
+$T_i^{\mathrm{up}}$ is the JPEG upload, $T_i^{\mathrm{edge}}$ is the checker,
+and $T_i^{\mathrm{down}}$ is the return of a short result. The request meets
+its deadline when $T_i^{\mathrm{conf}}\le D_i^{\mathrm{conf}}$.
+
+Checker time is not a constant. The predictor planned for November reads
+\begin{equation}
+\mathbf{z}_i
+=
+\left[
+L_i,\;
+U_i^{\mathrm{CPU}},\;
+T_{i-1}^{\mathrm{edge}}
+\right],
+\end{equation}
+with $L_i$ the JPEG size in bytes, $U_i^{\mathrm{CPU}}$ the server load at
+the request, and $T_{i-1}^{\mathrm{edge}}$ the previous checking time. A
+small network $g_\theta$ predicts $\hat T_i^{\mathrm{edge}}=g_\theta(\mathbf{z}_i)$
+before the JPEG is uploaded. The remaining uplink budget is
+\begin{equation}
+\label{eq:budget}
+B_i^{\mathrm{up}}
+=
+\left[
+D_i^{\mathrm{conf}}
+-
+\hat T_i^{\mathrm{edge}}
+-
+\hat T_i^{\mathrm{down}}
+-
+M
+\right]^+,
+\end{equation}
+and the uplink deadline is $d_i^{\mathrm{up}}=a_i+B_i^{\mathrm{up}}$ from
+the arrival time $a_i$. The scheduler serves
+\begin{equation}
+i^\star=\arg\min_{i\in\mathcal{Q}} d_i^{\mathrm{up}}.
+\end{equation}
+A long predicted edge time leaves less room for the upload, so that request
+gets an earlier deadline. None of $g_\theta$, $B_i^{\mathrm{up}}$, or the
+queue $\mathcal{Q}$ is in the prototype. The phone does not send a planned
+JPEG size or a confirmation deadline, and the laptop does not order
+uploads.

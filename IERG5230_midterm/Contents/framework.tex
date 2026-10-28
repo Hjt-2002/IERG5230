@@ -1,0 +1,86 @@
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+    font=\footnotesize,
+    >=Stealth,
+    block/.style={
+      draw, rounded corners=2pt, align=center,
+      inner sep=3pt, fill=white, minimum height=9.5mm
+    },
+    phone/.style={block, fill=blue!8},
+    edge/.style={block, fill=orange!12},
+    result/.style={block, fill=green!10},
+    arr/.style={->, semithick},
+    tag/.style={font=\scriptsize, inner sep=1.4pt, align=center, fill=white}
+  ]
+  \node[phone, text width=1.7cm] (cam) at (1.05,0) {Camera\\1 JPEG/s};
+  \node[phone, text width=1.55cm] (buf) at (3.15,0) {Keep the\\last 3};
+  \node[phone, text width=2.05cm] (mad) at (5.6,0) {$32\times 32$ gray\\MAD $<10$?};
+  \node[phone, text width=2.45cm] (smol) at (8.55,0) {SmolVLM-256M\\4-bit, newest};
+  \node[phone, text width=2.15cm] (show) at (11.35,0) {Show $s_i$, $\kappa_i$};
+  \node[result, text width=2.15cm] (skip) at (5.6,-1.75) {Quiet:\\keep $a$, skip};
+  \node[phone, text width=2.05cm] (gate) at (11.35,-1.75) {$\kappa_i\ge 0.5$?};
+
+  \node[edge, text width=2.7cm] (bge) at (3.05,-4.85)
+    {bge-small\\cosine on CPU};
+  \node[result, text width=2.45cm] (keep) at (3.05,-6.7) {Match:\\keep $a$};
+  \node[result, text width=2.55cm] (wait) at (7.15,-6.7)
+    {First mismatch:\\wait, no JPEG};
+  \node[edge, text width=2.7cm] (qwen) at (11.35,-4.85)
+    {Qwen3.5-2B\\up to 3 frames};
+  \node[edge, text width=2.85cm] (fuse) at (11.35,-6.7)
+    {Keep $a$, keep $s_i$,\\or take $q_i$};
+  \node[result, text width=4.6cm] (final) at (7.15,-8.45)
+    {Phrase on screen};
+
+  \draw[arr] (cam) -- (buf);
+  \draw[arr] (buf) -- (mad);
+  \draw[arr] (mad) -- node[tag, above] {changed} (smol);
+  \draw[arr] (smol) -- (show);
+  \draw[arr] (show) -- (gate);
+  \draw[arr] (mad) -- node[tag, right] {yes} (skip);
+
+  \draw[arr] (gate.south) -- ++(0,-0.58) coordinate (split);
+  \fill (split) circle[radius=1.1pt];
+  \draw[arr] (split) -|
+    node[tag, pos=0.42, above] {yes: sentence only}
+    (bge.north);
+  \draw[arr] (split) --
+    node[tag, left] {no: upload now}
+    (qwen.north);
+
+  \draw[arr] (bge) -- node[tag, right] {$\ge 0.70$} (keep);
+  \draw[arr] (bge.east) -- ++(0.55,0) coordinate (miss);
+  \fill (miss) circle[radius=1.1pt];
+  \draw[arr] (miss) --
+    node[tag, above] {second mismatch}
+    (qwen.west);
+  \draw[arr] (miss) |- (wait.north);
+  \draw[arr] (qwen) -- (fuse);
+
+  \draw[arr] (keep.south) -- ++(0,-0.42) -| (final.north west);
+  \draw[arr] (fuse.south) -- ++(0,-0.42) -| (final.north east);
+  \draw[arr] (wait.south) -- (final.north);
+
+  \begin{scope}[on background layer]
+    \node[draw, dashed, rounded corners=3pt, inner sep=6pt,
+          fit=(cam)(buf)(mad)(smol)(show)(skip)(gate)] (phonebox) {};
+    \node[draw, dashed, rounded corners=3pt, inner sep=7pt,
+          fit=(bge)(keep)(wait)(qwen)(fuse)] (lapbox) {};
+  \end{scope}
+  \node[font=\scriptsize\bfseries, anchor=south, inner sep=1pt]
+    at (phonebox.north) {Smartphone browser};
+  \node[font=\scriptsize\bfseries, anchor=south, inner sep=1pt]
+    at (lapbox.north) {Laptop on the same Wi-Fi};
+\end{tikzpicture}
+\caption{Live framework. A quiet frame, measured by a $32\times 32$
+grayscale mean absolute difference below 10, keeps the ongoing phrase and
+skips SmolVLM. Otherwise the phone shows $s_i$ at once. Low token
+confidence uploads the buffered frames immediately. A confident phrase
+sends the sentence only. The text encoder keeps the action when the
+sentence is still close. The first mismatch waits. The second mismatch
+uploads, and Qwen's phrase is kept only when it agrees with neither $a$
+nor $s_i$. The first confident phrase of a session starts $a$ with no
+cosine test.}
+\label{fig:framework}
+\end{figure*}

@@ -1,0 +1,60 @@
+{"index": 9230, "label": "texting", "raw": "Taking picture.", "pred": "using_laptop", "confidence": 0.8987836837768555, "compute_ms": 516.3, "match_score": 0.5713}
+{"index": 12359, "label": "cycling", "raw": "Riding bike.", "pred": "cycling", "confidence": 0.803519070148468, "compute_ms": 569.6, "match_score": 0.8043}
+{"index": 2429, "label": "running", "raw": "Running.", "pred": "running", "confidence": 0.9257086515426636, "compute_ms": 478.4, "match_score": 0.7824}
+{"index": 4331, "label": "eating", "raw": "Eating.", "pred": "eating", "confidence": 0.6141965985298157, "compute_ms": 480.1, "match_score": 0.8024}
+{"index": 5390, "label": "fighting", "raw": "Fighting.", "pred": "fighting", "confidence": 0.18926464021205902, "compute_ms": 468.2, "match_score": 0.8035}
+{"index": 10392, "label": "using_laptop", "raw": "Using their hand.", "pred": "hugging", "confidence": 0.2142956554889679, "compute_ms": 555.1, "match_score": 0.6171}
+{"index": 5023, "label": "listening_to_music", "raw": "Listening to music.", "pred": "listening_to_music", "confidence": 0.5317280888557434, "compute_ms": 586.3, "match_score": 0.8625}
+{"index": 3773, "label": "sitting", "raw": "Reading.", "pred": "sitting", "confidence": 0.43702611327171326, "compute_ms": 517.7, "match_score": 0.5298}
+{"index": 7196, "label": "drinking", "raw": "Drinking wine.", "pred": "drinking", "confidence": 0.45241570472717285, "compute_ms": 550.3, "match_score": 0.7887}
+{"index": 8146, "label": "hugging", "raw": "Hugging.", "pred": "hugging", "confidence": 0.859205961227417, "compute_ms": 546.8, "match_score": 0.8463}
+{"index": 5099, "label": "laughing", "raw": "Playing with doll.", "pred": "laughing", "confidence": 0.39227473735809326, "compute_ms": 608.9, "match_score": 0.5852}
+{"index": 12552, "label": "cycling", "raw": "Racing.", "pred": "running", "confidence": 0.20886091887950897, "compute_ms": 514.8, "match_score": 0.6769}
+{"index": 6356, "label": "laughing", "raw": "Smiling.", "pred": "laughing", "confidence": 0.8358358144760132, "compute_ms": 537.3, "match_score": 0.695}
+{"index": 9842, "label": "drinking", "raw": "Smiling.", "pred": "laughing", "confidence": 0.5960034728050232, "compute_ms": 564.0, "match_score": 0.695}
+{"index": 750, "label": "laughing", "raw": "Yelling.", "pred": "clapping", "confidence": 0.5763800740242004, "compute_ms": 581.4, "match_score": 0.575}
+{"index": 7086, "label": "texting", "raw": "Texting.", "pred": "texting", "confidence": 0.5405813455581665, "compute_ms": 556.7, "match_score": 0.8401}
+{"index": 5236, "label": "calling", "raw": "Talking on phone.", "pred": "calling", "confidence": 0.5531876087188721, "compute_ms": 606.2, "match_score": 0.8077}
+{"index": 5789, "label": "drinking", "raw": "Drinking.", "pred": "drinking", "confidence": 0.8470606207847595, "compute_ms": 523.6, "match_score": 0.8207}
+{"index": 2137, "label": "eating", "raw": "Eating.", "pred": "eating", "confidence": 0.38726773858070374, "compute_ms": 505.0, "match_score": 0.8024}
+{"index": 8197, "label": "calling", "raw": "Talking on phone.", "pred": "calling", "confidence": 0.9092593193054199, "compute_ms": 553.3, "match_score": 0.8077}
+{"index": 11829, "label": "hugging", "raw": "Talking on phone.", "pred": "calling", "confidence": 0.677244246006012, "compute_ms": 678.9, "match_score": 0.8077}
+{"index": 7200, "label": "hugging", "raw": "Sleeping.", "pred": "sleeping", "confidence": 0.2041454315185547, "compute_ms": 477.0, "match_score": 0.7392}
+{"index": 5878, "label": "hugging", "raw": "Holding child.", "pred": "hugging", "confidence": 0.320914089679718, "compute_ms": 494.8, "match_score": 0.6825}
+{"index": 10719, "label": "clapping", "raw": "Clapping.", "pred": "clapping", "confidence": 0.42445674538612366, "compute_ms": 537.9, "match_score": 0.8508}
+{"index": 9964, "label": "sleeping", "raw": "Reading.", "pred": "sitting", "confidence": 0.8364136815071106, "compute_ms": 532.1, "match_score": 0.5298}
+{"index": 9064, "label": "eating", "raw": "Eating.", "pred": "eating", "confidence": 0.7314119935035706, "compute_ms": 487.7, "match_score": 0.8024}
+{"index": 4443, "label": "dancing", "raw": "Dancing.", "pred": "dancing", "confidence": 0.46536892652511597, "compute_ms": 512.1, "match_score": 0.8204}
+{"index": 2379, "label": "calling", "raw": "Talking on phone.", "pred": "calling", "confidence": 0.8787128925323486, "compute_ms": 544.4, "match_score": 0.8077}
+{"index": 5777, "label": "listening_to_music", "raw": "Holding headphones.", "pred": "listening_to_music", "confidence": 0.24582335352897644, "compute_ms": 854.4, "match_score": 0.7059}
+{"index": 1854, "label": "clapping", "raw": "Catching up.", "pred": "eating", "confidence": 0.23115086555480957, "compute_ms": 766.1, "match_score": 0.4517}
+{"index": 6976, "label": "dancing", "raw": "Eating.", "pred": "eating", "confidence": 0.16893821954727173, "compute_ms": 597.0, "match_score": 0.8024}
+{"index": 1161, "label": "sleeping", "raw": "Sleeping.", "pred": "sleeping", "confidence": 0.8611606359481812, "compute_ms": 556.9, "match_score": 0.7392}
+{"index": 12343, "label": "dancing", "raw": "Singing.", "pred": "listening_to_music", "confidence": 0.47116395831108093, "compute_ms": 597.5, "match_score": 0.6257}
+{"index": 4330, "label": "clapping", "raw": "Standing.", "pred": "sitting", "confidence": 0.16077619791030884, "compute_ms": 482.4, "match_score": 0.6022}
+{"index": 8673, "label": "calling", "raw": "Talking on phone.", "pred": "calling", "confidence": 0.7069467902183533, "compute_ms": 739.0, "match_score": 0.8077}
+{"index": 11531, "label": "fighting", "raw": "Fighting.", "pred": "fighting", "confidence": 0.6744810938835144, "compute_ms": 1035.2, "match_score": 0.8035}
+{"index": 4960, "label": "texting", "raw": "Taking selfie.", "pred": "laughing", "confidence": 0.5879709720611572, "compute_ms": 1026.1, "match_score": 0.5654}
+{"index": 5114, "label": "laughing", "raw": "Smiling.", "pred": "laughing", "confidence": 0.32473427057266235, "compute_ms": 1040.5, "match_score": 0.695}
+{"index": 7143, "label": "listening_to_music", "raw": "Using a computer.", "pred": "using_laptop", "confidence": 0.3837585151195526, "compute_ms": 675.0, "match_score": 0.8251}
+{"index": 11895, "label": "running", "raw": "Running.", "pred": "running", "confidence": 0.7022103667259216, "compute_ms": 597.4, "match_score": 0.7824}
+{"index": 707, "label": "using_laptop", "raw": "Sitting.", "pred": "sitting", "confidence": 0.6709765791893005, "compute_ms": 611.0, "match_score": 0.815}
+{"index": 8474, "label": "cycling", "raw": "Riding bike.", "pred": "cycling", "confidence": 0.5715243220329285, "compute_ms": 517.6, "match_score": 0.8043}
+{"index": 8126, "label": "using_laptop", "raw": "Using laptop.", "pred": "using_laptop", "confidence": 0.41882753372192383, "compute_ms": 527.2, "match_score": 0.8376}
+{"index": 9570, "label": "clapping", "raw": "Waving.", "pred": "clapping", "confidence": 0.0819811299443245, "compute_ms": 512.3, "match_score": 0.639}
+{"index": 6948, "label": "sleeping", "raw": "Resting.", "pred": "sleeping", "confidence": 0.2004161924123764, "compute_ms": 503.3, "match_score": 0.6336}
+{"index": 8724, "label": "sleeping", "raw": "Sleeping.", "pred": "sleeping", "confidence": 0.16124872863292694, "compute_ms": 489.5, "match_score": 0.7392}
+{"index": 2383, "label": "drinking", "raw": "Drinking water.", "pred": "drinking", "confidence": 0.8188034892082214, "compute_ms": 531.3, "match_score": 0.7706}
+{"index": 10986, "label": "texting", "raw": "Reading.", "pred": "sitting", "confidence": 0.427406370639801, "compute_ms": 483.5, "match_score": 0.5298}
+{"index": 627, "label": "cycling", "raw": "Riding bike.", "pred": "cycling", "confidence": 0.33547675609588623, "compute_ms": 529.9, "match_score": 0.8043}
+{"index": 3741, "label": "eating", "raw": "Eating.", "pred": "eating", "confidence": 0.9486803412437439, "compute_ms": 480.6, "match_score": 0.8024}
+{"index": 8173, "label": "listening_to_music", "raw": "Walking.", "pred": "dancing", "confidence": 0.5826119184494019, "compute_ms": 471.8, "match_score": 0.5785}
+{"index": 2518, "label": "sitting", "raw": "Working on laptop.", "pred": "using_laptop", "confidence": 0.5168458223342896, "compute_ms": 722.7, "match_score": 0.7922}
+{"index": 9628, "label": "fighting", "raw": "Running.", "pred": "running", "confidence": 0.46398425102233887, "compute_ms": 782.3, "match_score": 0.7824}
+{"index": 5343, "label": "dancing", "raw": "Walking.", "pred": "dancing", "confidence": 0.8663880228996277, "compute_ms": 583.2, "match_score": 0.5785}
+{"index": 8519, "label": "using_laptop", "raw": "Typing.", "pred": "texting", "confidence": 0.5175802111625671, "compute_ms": 518.3, "match_score": 0.6168}
+{"index": 9787, "label": "sitting", "raw": "Writing.", "pred": "texting", "confidence": 0.7278897762298584, "compute_ms": 472.9, "match_score": 0.52}
+{"index": 7902, "label": "running", "raw": "Running.", "pred": "running", "confidence": 0.9750216007232666, "compute_ms": 481.2, "match_score": 0.7824}
+{"index": 110, "label": "fighting", "raw": "Walking.", "pred": "dancing", "confidence": 0.5217530131340027, "compute_ms": 626.1, "match_score": 0.5785}
+{"index": 4834, "label": "running", "raw": "Running.", "pred": "running", "confidence": 0.7779607772827148, "compute_ms": 505.9, "match_score": 0.7824}
+{"index": 4933, "label": "sitting", "raw": "Reading.", "pred": "sitting", "confidence": 0.15069565176963806, "compute_ms": 533.6, "match_score": 0.5298}

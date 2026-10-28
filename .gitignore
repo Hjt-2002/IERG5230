@@ -1,0 +1,17 @@
+har_initial/.venv/
+har_initial/data/
+har_initial/certs/
+**/__pycache__/
+*.py[cod]
+~$*
+*.pem
+
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc

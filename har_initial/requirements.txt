@@ -1,0 +1,17 @@
+# Tested with Python 3.13 and an NVIDIA GPU.
+# The CUDA wheels come from PyTorch; the other packages come from PyPI.
+--index-url https://download.pytorch.org/whl/cu130
+--extra-index-url https://pypi.org/simple
+
+torch==2.14.0+cu130
+torchvision==0.29.0+cu130
+fastapi>=0.115
+uvicorn>=0.32
+python-multipart>=0.0.12
+pillow>=10.4
+transformers>=4.49
+sentencepiece>=0.2
+num2words>=0.5
+safetensors>=0.4
+datasets>=3.0
+opencv-python-headless>=4.10

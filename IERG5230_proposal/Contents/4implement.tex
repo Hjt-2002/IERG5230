@@ -1,0 +1,76 @@
+\section{Implementation}
+
+\subsection{Platform}
+
+The client is a smartphone browser. SmolVLM-256M-Instruct runs there in
+4-bit form: the vision encoder and the decoder use 4-bit weights, on WASM
+on an iPhone and on WebGPU where the browser provides it. The generated
+sentence and its minimum token probability are available before any image
+leaves the phone.
+
+Frames that fall below $\tau_{\mathrm{u}}$ are JPEG-encoded and sent over
+Wi-Fi to a laptop. The laptop server is FastAPI. It holds the activity
+sentence bank and runs CLIP as the checker. Qwen2-VL is the stronger
+generative checker in the real-world comparison. Before the JPEG is
+transmitted, the phone sends the planned JPEG size and the confirmation
+deadline. The laptop reads its CPU utilization and the previous checking
+time, predicts $\hat T_i^{\mathrm{edge}}$, and places the request in the
+upload scheduler. The scheduler returns a grant. The phone then uploads the
+JPEG, the laptop checks it, and the accept-or-rewrite result comes back.
+This path does not change the Wi-Fi MAC or the access point.
+
+\subsection{What is Already Running}
+
+The current prototype already runs this client--server path in the browser.
+SmolVLM writes the action phrase on the phone, the page shows that phrase
+and the minimum token probability, and the JPEG is uploaded only when the
+probability is below the threshold. CLIP on the laptop maps both the phone
+sentence and, when present, the picture into the sentence bank. The caption
+is replaced only when those two matches differ. A confident phrase sends
+the sentence and leaves the picture on the phone.
+
+The predictor, the dynamic uplink budget, and the multi-client scheduler
+are not in this prototype yet. The next step is to timestamp the Wi-Fi
+transfer and to record checker latency under different CPU loads, JPEG
+sizes, and checker models. Those traces train the predictor and drive the
+scheduler simulation.
+
+\subsection{Evaluation}
+
+The caption path is tested on the phone and the laptop over the same Wi-Fi
+network. One person performs the activities in the sentence bank. For this
+real-world test we report on-device generation latency, the fraction of
+frames that upload a JPEG, the fraction of captions that are accepted or
+rewritten, and a human check of the final caption on a small labeled
+subset. The three caption baselines are the phone sentence alone, an upload
+on every frame, and the confidence-gated upload.
+
+The scheduler is evaluated in simulation driven by the measured upload and
+checking traces, with several phones contending for the laptop. We report
+prediction mean absolute error, the fraction of checks that meet the
+end-to-end deadline, the 95th percentile confirmation delay, the upload
+waiting time, and the same figures as the number of clients grows. The
+three schedulers are:
+\begin{enumerate}
+\item \emph{Round robin}: uploads are served with no deadline and no
+checking time;
+\item \emph{Static budget}: uplink deadlines use one fixed average checking
+time;
+\item \emph{Predictive budget}: uplink deadlines use
+$\hat T_i^{\mathrm{edge}}$.
+\end{enumerate}
+The caption comparison and the scheduler comparison are reported
+separately.
+
+\subsection{Roles}
+
+Both members integrate the demo, the evaluation, and the report.
+
+Juntao Hu is responsible for the local model, the caption bank, the
+acceptance rule, the laptop checker, and the caption-quality evaluation.
+
+Tianchen Liu is responsible for the latency predictor, the dynamic uplink
+budget, the upload scheduler, and the multi-client simulation.
+
+The sentence-and-check path is the information-processing part of the
+project. Predictive, deadline-aware upload is the networking part.

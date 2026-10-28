@@ -1,0 +1,4789 @@
+{
+  "protocol": {
+    "frames": 3,
+    "spacing": "1 second around the middle when the clip is at least 2.2 seconds, otherwise spread across the clip",
+    "ucf101": "Official recognition testlist01.",
+    "hmdb51": "Test list packaged with Sina272/hmdb51-v4 (30 clips per class when complete).",
+    "matcher": "BAAI/bge-small-en-v1.5 mean-pool cosine, argmax over class sentences.",
+    "latency": "Sum of pixel checks, SmolVLM generates, Qwen generates, and phrase-encoder calls used for that clip. No network round-trip.",
+    "pixel_mad_max": 10.0,
+    "leave_limit": 2,
+    "smol_max_new_tokens": 16,
+    "qwen_max_new_tokens": 32,
+    "device": "cuda",
+    "smol_runtime": "PyTorch float32 on this machine. This is not the phone WebGPU timing.",
+    "qwen_runtime": "PyTorch bfloat16 on this machine.",
+    "note": "A sparse three-frame phrase is not the official video accuracy of either dataset."
+  },
+  "limit": 0,
+  "datasets": {
+    "ucf101": {
+      "clips": 3783,
+      "classes": 101,
+      "min_per_class": 28,
+      "max_per_class": 49,
+      "smol": {
+        "correct": 928,
+        "total": 3783,
+        "accuracy": 0.2453,
+        "mean_latency_ms": 350.3,
+        "p95_latency_ms": 580.3,
+        "mean_uploads": 0.0,
+        "skip_rate": 0.2945,
+        "examples": [
+          {
+            "label": "ApplyEyeMakeup",
+            "pred": "ApplyLipstick",
+            "phrase": "Tanning.",
+            "latency_ms": 537.2
+          },
+          {
+            "label": "ApplyEyeMakeup",
+            "pred": "Shotput",
+            "phrase": "Taking picture.",
+            "latency_ms": 201.6
+          },
+          {
+            "label": "ApplyEyeMakeup",
+            "pred": "Typing",
+            "phrase": "Talking on phone.",
+            "latency_ms": 606.7
+          },
+          {
+            "label": "ApplyEyeMakeup",
+            "pred": "Shotput",
+            "phrase": "Looking at camera.",
+            "latency_ms": 206.2
+          },
+          {
+            "label": "ApplyEyeMakeup",
+            "pred": "YoYo",
+            "phrase": "Smiling.",
+            "latency_ms": 177.4
+          },
+          {
+            "label": "ApplyEyeMakeup",
+            "pred": "ApplyLipstick",
+            "phrase": "Licking her lips.",
+            "latency_ms": 421.5
+          },
+          {
+            "label": "ApplyEyeMakeup",
+            "pred": "BrushingTeeth",
+            "phrase": "Brushing teeth.",
+            "latency_ms": 226.7
+          },
+          {
+            "label": "ApplyEyeMakeup",
+            "pred": "ApplyLipstick",
+            "phrase": "Drying makeup.",
+            "latency_ms": 563.5
+          },
+          {
+            "label": "ApplyEyeMakeup",
+            "pred": "BrushingTeeth",
+            "phrase": "Chewing.",
+            "latency_ms": 196.9
+          },
+          {
+            "label": "ApplyEyeMakeup",
+            "pred": "Shotput",
+            "phrase": "Posing.",
+            "latency_ms": 174.6
+          },
+          {
+            "label": "ApplyEyeMakeup",
+            "pred": "YoYo",
+            "phrase": "Smiling.",
+            "latency_ms": 174.9
+          },
+          {
+            "label": "ApplyEyeMakeup",
+            "pred": "Shotput",
+            "phrase": "Posing.",
+            "latency_ms": 178.0
+          }
+        ]
+      },
+      "qwen": {
+        "correct": 1785,
+        "total": 3783,
+        "accuracy": 0.4718,
+        "mean_latency_ms": 348.3,
+        "p95_latency_ms": 459.2,
+        "mean_uploads": 1.0,
+        "skip_rate": 0.0,
+        "examples": [
+          {
+            "label": "ApplyEyeMakeup",
+            "pred": "ApplyLipstick",
+            "phrase": "putting on makeup",
+            "latency_ms": 374.1
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "YoYo",
+            "phrase": "eating",
+            "latency_ms": 275.0
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "ApplyEyeMakeup",
+            "phrase": "applying makeup",
+            "latency_ms": 395.7
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "ApplyEyeMakeup",
+            "phrase": "applying makeup",
+            "latency_ms": 344.5
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "ApplyEyeMakeup",
+            "phrase": "applying makeup",
+            "latency_ms": 347.9
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "ApplyEyeMakeup",
+            "phrase": "applying makeup",
+            "latency_ms": 342.3
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "ApplyEyeMakeup",
+            "phrase": "applying makeup",
+            "latency_ms": 381.2
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "ApplyEyeMakeup",
+            "phrase": "applying makeup",
+            "latency_ms": 349.4
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "YoYo",
+            "phrase": "eating",
+            "latency_ms": 272.7
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "ApplyEyeMakeup",
+            "phrase": "applying makeup",
+            "latency_ms": 342.6
+          },
+          {
+            "label": "Archery",
+            "pred": "Hammering",
+            "phrase": "reloading",
+            "latency_ms": 305.4
+          },
+          {
+            "label": "Archery",
+            "pred": "Hammering",
+            "phrase": "reloading",
+            "latency_ms": 306.2
+          }
+        ]
+      },
+      "hybrid": {
+        "correct": 1640,
+        "total": 3783,
+        "accuracy": 0.4335,
+        "mean_latency_ms": 816.0,
+        "p95_latency_ms": 1571.9,
+        "mean_uploads": 1.4941,
+        "skip_rate": 0.2926,
+        "examples": [
+          {
+            "label": "ApplyLipstick",
+            "pred": "YoYo",
+            "phrase": "Eating.",
+            "latency_ms": 143.8
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "YoYo",
+            "phrase": "eating",
+            "latency_ms": 395.6
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "YoYo",
+            "phrase": "eating",
+            "latency_ms": 759.4
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "BrushingTeeth",
+            "phrase": "Brushing teeth.",
+            "latency_ms": 222.3
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "ApplyEyeMakeup",
+            "phrase": "applying makeup",
+            "latency_ms": 485.8
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "ApplyEyeMakeup",
+            "phrase": "applying makeup",
+            "latency_ms": 503.0
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "ApplyEyeMakeup",
+            "phrase": "applying makeup",
+            "latency_ms": 437.1
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "ApplyEyeMakeup",
+            "phrase": "applying makeup",
+            "latency_ms": 443.5
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "BrushingTeeth",
+            "phrase": "brushing teeth",
+            "latency_ms": 473.9
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "YoYo",
+            "phrase": "eating",
+            "latency_ms": 462.7
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "BrushingTeeth",
+            "phrase": "Brushing teeth.",
+            "latency_ms": 209.3
+          },
+          {
+            "label": "ApplyLipstick",
+            "pred": "ApplyEyeMakeup",
+            "phrase": "applying makeup",
+            "latency_ms": 661.7
+          }
+        ],
+        "confidence": 0.5,
+        "similarity": 0.7
+      },
+      "sensitivity": [
+        {
+          "correct": 1332,
+          "total": 3783,
+          "accuracy": 0.3521,
+          "mean_latency_ms": 648.2,
+          "p95_latency_ms": 1442.5,
+          "mean_uploads": 0.94,
+          "skip_rate": 0.2922,
+          "examples": [
+            {
+              "label": "ApplyEyeMakeup",
+              "pred": "Haircut",
+              "phrase": "Brushing hair.",
+              "latency_ms": 981.7
+            },
+            {
+              "label": "ApplyEyeMakeup",
+              "pred": "Haircut",
+              "phrase": "Brushing hair.",
+              "latency_ms": 814.2
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 143.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smiling.",
+              "latency_ms": 170.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 759.2
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 227.2
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 201.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smiling.",
+              "latency_ms": 177.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smelling something.",
+              "latency_ms": 198.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 236.4
+            }
+          ],
+          "confidence": 0.3,
+          "similarity": 0.6
+        },
+        {
+          "correct": 1429,
+          "total": 3783,
+          "accuracy": 0.3777,
+          "mean_latency_ms": 653.8,
+          "p95_latency_ms": 1442.5,
+          "mean_uploads": 0.9529,
+          "skip_rate": 0.291,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 143.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smiling.",
+              "latency_ms": 170.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 759.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 227.2
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 201.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smiling.",
+              "latency_ms": 177.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smelling something.",
+              "latency_ms": 198.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 236.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            }
+          ],
+          "confidence": 0.3,
+          "similarity": 0.65
+        },
+        {
+          "correct": 1489,
+          "total": 3783,
+          "accuracy": 0.3936,
+          "mean_latency_ms": 659.7,
+          "p95_latency_ms": 1444.0,
+          "mean_uploads": 0.9678,
+          "skip_rate": 0.2902,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 143.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smiling.",
+              "latency_ms": 170.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 759.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 227.2
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 201.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smiling.",
+              "latency_ms": 177.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smelling something.",
+              "latency_ms": 198.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 236.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            }
+          ],
+          "confidence": 0.3,
+          "similarity": 0.7
+        },
+        {
+          "correct": 1531,
+          "total": 3783,
+          "accuracy": 0.4047,
+          "mean_latency_ms": 667.4,
+          "p95_latency_ms": 1446.5,
+          "mean_uploads": 0.987,
+          "skip_rate": 0.2891,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 143.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smiling.",
+              "latency_ms": 170.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 759.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 227.2
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 201.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smiling.",
+              "latency_ms": 177.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smelling something.",
+              "latency_ms": 198.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 236.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            }
+          ],
+          "confidence": 0.3,
+          "similarity": 0.75
+        },
+        {
+          "correct": 1542,
+          "total": 3783,
+          "accuracy": 0.4076,
+          "mean_latency_ms": 671.5,
+          "p95_latency_ms": 1446.5,
+          "mean_uploads": 0.9979,
+          "skip_rate": 0.2887,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 143.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smiling.",
+              "latency_ms": 170.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 759.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 227.2
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 201.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smiling.",
+              "latency_ms": 177.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smelling something.",
+              "latency_ms": 198.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 236.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            }
+          ],
+          "confidence": 0.3,
+          "similarity": 0.8
+        },
+        {
+          "correct": 1420,
+          "total": 3783,
+          "accuracy": 0.3754,
+          "mean_latency_ms": 742.3,
+          "p95_latency_ms": 1523.9,
+          "mean_uploads": 1.253,
+          "skip_rate": 0.2932,
+          "examples": [
+            {
+              "label": "ApplyEyeMakeup",
+              "pred": "Haircut",
+              "phrase": "Brushing hair.",
+              "latency_ms": 981.7
+            },
+            {
+              "label": "ApplyEyeMakeup",
+              "pred": "Haircut",
+              "phrase": "Brushing hair.",
+              "latency_ms": 1194.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 143.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 759.2
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 227.2
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smiling.",
+              "latency_ms": 177.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            }
+          ],
+          "confidence": 0.4,
+          "similarity": 0.6
+        },
+        {
+          "correct": 1522,
+          "total": 3783,
+          "accuracy": 0.4023,
+          "mean_latency_ms": 745.3,
+          "p95_latency_ms": 1523.2,
+          "mean_uploads": 1.2598,
+          "skip_rate": 0.2923,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 143.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 759.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 227.2
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smiling.",
+              "latency_ms": 177.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            }
+          ],
+          "confidence": 0.4,
+          "similarity": 0.65
+        },
+        {
+          "correct": 1587,
+          "total": 3783,
+          "accuracy": 0.4195,
+          "mean_latency_ms": 748.2,
+          "p95_latency_ms": 1523.2,
+          "mean_uploads": 1.2672,
+          "skip_rate": 0.2917,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 143.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 759.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 227.2
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smiling.",
+              "latency_ms": 177.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            }
+          ],
+          "confidence": 0.4,
+          "similarity": 0.7
+        },
+        {
+          "correct": 1618,
+          "total": 3783,
+          "accuracy": 0.4277,
+          "mean_latency_ms": 751.8,
+          "p95_latency_ms": 1524.6,
+          "mean_uploads": 1.2768,
+          "skip_rate": 0.2912,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 143.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 759.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 227.2
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smiling.",
+              "latency_ms": 177.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            }
+          ],
+          "confidence": 0.4,
+          "similarity": 0.75
+        },
+        {
+          "correct": 1622,
+          "total": 3783,
+          "accuracy": 0.4288,
+          "mean_latency_ms": 754.3,
+          "p95_latency_ms": 1524.6,
+          "mean_uploads": 1.2834,
+          "skip_rate": 0.2909,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 143.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 759.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "Shotput",
+              "phrase": "Looking at camera.",
+              "latency_ms": 227.2
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Smiling.",
+              "latency_ms": 177.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            }
+          ],
+          "confidence": 0.4,
+          "similarity": 0.8
+        },
+        {
+          "correct": 1468,
+          "total": 3783,
+          "accuracy": 0.3881,
+          "mean_latency_ms": 813.0,
+          "p95_latency_ms": 1571.9,
+          "mean_uploads": 1.4869,
+          "skip_rate": 0.2933,
+          "examples": [
+            {
+              "label": "ApplyEyeMakeup",
+              "pred": "Haircut",
+              "phrase": "Brushing hair.",
+              "latency_ms": 981.7
+            },
+            {
+              "label": "ApplyEyeMakeup",
+              "pred": "Haircut",
+              "phrase": "Brushing hair.",
+              "latency_ms": 1548.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 143.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 759.2
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 485.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 443.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            }
+          ],
+          "confidence": 0.5,
+          "similarity": 0.6
+        },
+        {
+          "correct": 1579,
+          "total": 3783,
+          "accuracy": 0.4174,
+          "mean_latency_ms": 814.6,
+          "p95_latency_ms": 1571.9,
+          "mean_uploads": 1.4909,
+          "skip_rate": 0.2931,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 143.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 759.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 485.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 443.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            }
+          ],
+          "confidence": 0.5,
+          "similarity": 0.65
+        },
+        {
+          "correct": 1640,
+          "total": 3783,
+          "accuracy": 0.4335,
+          "mean_latency_ms": 816.0,
+          "p95_latency_ms": 1571.9,
+          "mean_uploads": 1.4941,
+          "skip_rate": 0.2926,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 143.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 759.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 485.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 443.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            }
+          ],
+          "confidence": 0.5,
+          "similarity": 0.7
+        },
+        {
+          "correct": 1681,
+          "total": 3783,
+          "accuracy": 0.4444,
+          "mean_latency_ms": 817.0,
+          "p95_latency_ms": 1571.9,
+          "mean_uploads": 1.497,
+          "skip_rate": 0.2925,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 143.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 759.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 485.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 443.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            }
+          ],
+          "confidence": 0.5,
+          "similarity": 0.75
+        },
+        {
+          "correct": 1691,
+          "total": 3783,
+          "accuracy": 0.447,
+          "mean_latency_ms": 817.8,
+          "p95_latency_ms": 1571.9,
+          "mean_uploads": 1.4988,
+          "skip_rate": 0.2924,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 143.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 759.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 485.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 443.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            }
+          ],
+          "confidence": 0.5,
+          "similarity": 0.8
+        },
+        {
+          "correct": 1500,
+          "total": 3783,
+          "accuracy": 0.3965,
+          "mean_latency_ms": 871.4,
+          "p95_latency_ms": 1600.5,
+          "mean_uploads": 1.6831,
+          "skip_rate": 0.2938,
+          "examples": [
+            {
+              "label": "ApplyEyeMakeup",
+              "pred": "Haircut",
+              "phrase": "Brushing hair.",
+              "latency_ms": 981.7
+            },
+            {
+              "label": "ApplyEyeMakeup",
+              "pred": "Haircut",
+              "phrase": "Brushing hair.",
+              "latency_ms": 1548.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 374.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 759.2
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 485.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 443.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            }
+          ],
+          "confidence": 0.6,
+          "similarity": 0.6
+        },
+        {
+          "correct": 1611,
+          "total": 3783,
+          "accuracy": 0.4259,
+          "mean_latency_ms": 872.5,
+          "p95_latency_ms": 1600.7,
+          "mean_uploads": 1.6857,
+          "skip_rate": 0.2935,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 374.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 759.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 485.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 443.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            }
+          ],
+          "confidence": 0.6,
+          "similarity": 0.65
+        },
+        {
+          "correct": 1683,
+          "total": 3783,
+          "accuracy": 0.4449,
+          "mean_latency_ms": 873.0,
+          "p95_latency_ms": 1600.8,
+          "mean_uploads": 1.6868,
+          "skip_rate": 0.2932,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 374.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 759.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 485.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 443.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            }
+          ],
+          "confidence": 0.6,
+          "similarity": 0.7
+        },
+        {
+          "correct": 1730,
+          "total": 3783,
+          "accuracy": 0.4573,
+          "mean_latency_ms": 873.3,
+          "p95_latency_ms": 1600.7,
+          "mean_uploads": 1.6875,
+          "skip_rate": 0.2932,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 374.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 759.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 485.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 443.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            }
+          ],
+          "confidence": 0.6,
+          "similarity": 0.75
+        },
+        {
+          "correct": 1740,
+          "total": 3783,
+          "accuracy": 0.46,
+          "mean_latency_ms": 873.5,
+          "p95_latency_ms": 1600.7,
+          "mean_uploads": 1.6881,
+          "skip_rate": 0.293,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 374.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 759.4
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 485.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 443.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            }
+          ],
+          "confidence": 0.6,
+          "similarity": 0.8
+        },
+        {
+          "correct": 1521,
+          "total": 3783,
+          "accuracy": 0.4021,
+          "mean_latency_ms": 912.0,
+          "p95_latency_ms": 1617.7,
+          "mean_uploads": 1.8216,
+          "skip_rate": 0.294,
+          "examples": [
+            {
+              "label": "ApplyEyeMakeup",
+              "pred": "Haircut",
+              "phrase": "Brushing hair.",
+              "latency_ms": 981.7
+            },
+            {
+              "label": "ApplyEyeMakeup",
+              "pred": "Haircut",
+              "phrase": "Brushing hair.",
+              "latency_ms": 1548.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 374.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 485.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 443.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            }
+          ],
+          "confidence": 0.7,
+          "similarity": 0.6
+        },
+        {
+          "correct": 1634,
+          "total": 3783,
+          "accuracy": 0.4319,
+          "mean_latency_ms": 912.3,
+          "p95_latency_ms": 1617.7,
+          "mean_uploads": 1.8224,
+          "skip_rate": 0.2939,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 374.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 485.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 443.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 916.0
+            }
+          ],
+          "confidence": 0.7,
+          "similarity": 0.65
+        },
+        {
+          "correct": 1708,
+          "total": 3783,
+          "accuracy": 0.4515,
+          "mean_latency_ms": 912.5,
+          "p95_latency_ms": 1617.6,
+          "mean_uploads": 1.8229,
+          "skip_rate": 0.2939,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 374.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 485.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 443.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 916.0
+            }
+          ],
+          "confidence": 0.7,
+          "similarity": 0.7
+        },
+        {
+          "correct": 1755,
+          "total": 3783,
+          "accuracy": 0.4639,
+          "mean_latency_ms": 912.7,
+          "p95_latency_ms": 1617.6,
+          "mean_uploads": 1.8234,
+          "skip_rate": 0.2939,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 374.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 485.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 443.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 916.0
+            }
+          ],
+          "confidence": 0.7,
+          "similarity": 0.75
+        },
+        {
+          "correct": 1776,
+          "total": 3783,
+          "accuracy": 0.4695,
+          "mean_latency_ms": 912.8,
+          "p95_latency_ms": 1617.9,
+          "mean_uploads": 1.8237,
+          "skip_rate": 0.2938,
+          "examples": [
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "Eating.",
+              "latency_ms": 374.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 395.6
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 222.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 485.8
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 503.0
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 437.1
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 443.5
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "brushing teeth",
+              "latency_ms": 473.9
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "YoYo",
+              "phrase": "eating",
+              "latency_ms": 462.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "BrushingTeeth",
+              "phrase": "Brushing teeth.",
+              "latency_ms": 209.3
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 661.7
+            },
+            {
+              "label": "ApplyLipstick",
+              "pred": "ApplyEyeMakeup",
+              "phrase": "applying makeup",
+              "latency_ms": 1381.2
+            }
+          ],
+          "confidence": 0.7,
+          "similarity": 0.8
+        }
+      ]
+    },
+    "hmdb51": {
+      "clips": 1530,
+      "classes": 51,
+      "min_per_class": 30,
+      "max_per_class": 30,
+      "smol": {
+        "correct": 288,
+        "total": 1530,
+        "accuracy": 0.1882,
+        "mean_latency_ms": 373.2,
+        "p95_latency_ms": 602.0,
+        "mean_uploads": 0.0,
+        "skip_rate": 0.2431,
+        "examples": [
+          {
+            "label": "brush_hair",
+            "pred": "situp",
+            "phrase": "Posing.",
+            "latency_ms": 178.5
+          },
+          {
+            "label": "brush_hair",
+            "pred": "smile",
+            "phrase": "Smiling",
+            "latency_ms": 400.2
+          },
+          {
+            "label": "brush_hair",
+            "pred": "talk",
+            "phrase": "Talking.",
+            "latency_ms": 398.5
+          },
+          {
+            "label": "brush_hair",
+            "pred": "situp",
+            "phrase": "Looking at plants.",
+            "latency_ms": 451.7
+          },
+          {
+            "label": "brush_hair",
+            "pred": "stand",
+            "phrase": "Standing.",
+            "latency_ms": 452.4
+          },
+          {
+            "label": "brush_hair",
+            "pred": "talk",
+            "phrase": "Reading.",
+            "latency_ms": 430.1
+          },
+          {
+            "label": "brush_hair",
+            "pred": "situp",
+            "phrase": "Posing.",
+            "latency_ms": 293.7
+          },
+          {
+            "label": "brush_hair",
+            "pred": "shoot_ball",
+            "phrase": "Playing video game.",
+            "latency_ms": 450.5
+          },
+          {
+            "label": "brush_hair",
+            "pred": "smile",
+            "phrase": "Smiling.",
+            "latency_ms": 352.0
+          },
+          {
+            "label": "brush_hair",
+            "pred": "situp",
+            "phrase": "Looking at camera.",
+            "latency_ms": 559.4
+          },
+          {
+            "label": "brush_hair",
+            "pred": "stand",
+            "phrase": "Standing.",
+            "latency_ms": 397.8
+          },
+          {
+            "label": "brush_hair",
+            "pred": "shake_hands",
+            "phrase": "Holding her hand.",
+            "latency_ms": 489.0
+          }
+        ]
+      },
+      "qwen": {
+        "correct": 812,
+        "total": 1530,
+        "accuracy": 0.5307,
+        "mean_latency_ms": 371.2,
+        "p95_latency_ms": 456.2,
+        "mean_uploads": 1.0,
+        "skip_rate": 0.0,
+        "examples": [
+          {
+            "label": "brush_hair",
+            "pred": "smile",
+            "phrase": "smiling",
+            "latency_ms": 344.2
+          },
+          {
+            "label": "brush_hair",
+            "pred": "smile",
+            "phrase": "smiling",
+            "latency_ms": 311.1
+          },
+          {
+            "label": "brush_hair",
+            "pred": "situp",
+            "phrase": "looking in the mirror",
+            "latency_ms": 386.0
+          },
+          {
+            "label": "brush_hair",
+            "pred": "situp",
+            "phrase": "putting on glasses",
+            "latency_ms": 428.7
+          },
+          {
+            "label": "brush_hair",
+            "pred": "stand",
+            "phrase": "fixing the picture",
+            "latency_ms": 388.1
+          },
+          {
+            "label": "brush_hair",
+            "pred": "talk",
+            "phrase": "holding a microphone",
+            "latency_ms": 359.4
+          },
+          {
+            "label": "cartwheel",
+            "pred": "handstand",
+            "phrase": "doing a handstand",
+            "latency_ms": 378.3
+          },
+          {
+            "label": "cartwheel",
+            "pred": "throw",
+            "phrase": "throwing a ball",
+            "latency_ms": 376.2
+          },
+          {
+            "label": "cartwheel",
+            "pred": "handstand",
+            "phrase": "doing a handstand",
+            "latency_ms": 386.1
+          },
+          {
+            "label": "cartwheel",
+            "pred": "throw",
+            "phrase": "throwing a ball",
+            "latency_ms": 379.2
+          },
+          {
+            "label": "cartwheel",
+            "pred": "somersault",
+            "phrase": "doing a backflip",
+            "latency_ms": 374.7
+          },
+          {
+            "label": "cartwheel",
+            "pred": "handstand",
+            "phrase": "doing a handstand",
+            "latency_ms": 437.9
+          }
+        ]
+      },
+      "hybrid": {
+        "correct": 660,
+        "total": 1530,
+        "accuracy": 0.4314,
+        "mean_latency_ms": 933.2,
+        "p95_latency_ms": 1667.4,
+        "mean_uploads": 1.7078,
+        "skip_rate": 0.2399,
+        "examples": [
+          {
+            "label": "brush_hair",
+            "pred": "smile",
+            "phrase": "Smiling",
+            "latency_ms": 415.6
+          },
+          {
+            "label": "brush_hair",
+            "pred": "smile",
+            "phrase": "Smiling",
+            "latency_ms": 1305.1
+          },
+          {
+            "label": "brush_hair",
+            "pred": "pullup",
+            "phrase": "pulling curtain",
+            "latency_ms": 1465.4
+          },
+          {
+            "label": "brush_hair",
+            "pred": "situp",
+            "phrase": "looking in mirror",
+            "latency_ms": 1060.6
+          },
+          {
+            "label": "brush_hair",
+            "pred": "sit",
+            "phrase": "Sitting.",
+            "latency_ms": 650.3
+          },
+          {
+            "label": "brush_hair",
+            "pred": "situp",
+            "phrase": "putting on glasses",
+            "latency_ms": 1698.8
+          },
+          {
+            "label": "brush_hair",
+            "pred": "catch",
+            "phrase": "hanging picture",
+            "latency_ms": 398.0
+          },
+          {
+            "label": "brush_hair",
+            "pred": "handstand",
+            "phrase": "holding a phone",
+            "latency_ms": 473.8
+          },
+          {
+            "label": "brush_hair",
+            "pred": "wave",
+            "phrase": "singing",
+            "latency_ms": 419.9
+          },
+          {
+            "label": "cartwheel",
+            "pred": "throw",
+            "phrase": "throwing frisbee",
+            "latency_ms": 503.7
+          },
+          {
+            "label": "cartwheel",
+            "pred": "throw",
+            "phrase": "throwing",
+            "latency_ms": 371.9
+          },
+          {
+            "label": "cartwheel",
+            "pred": "sword_exercise",
+            "phrase": "wrestling",
+            "latency_ms": 387.8
+          }
+        ],
+        "confidence": 0.5,
+        "similarity": 0.7
+      },
+      "sensitivity": [
+        {
+          "correct": 487,
+          "total": 1530,
+          "accuracy": 0.3183,
+          "mean_latency_ms": 724.8,
+          "p95_latency_ms": 1528.8,
+          "mean_uploads": 1.0477,
+          "skip_rate": 0.2407,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 415.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1087.2
+            },
+            {
+              "label": "brush_hair",
+              "pred": "sit",
+              "phrase": "Sitting.",
+              "latency_ms": 650.3
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1409.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pick",
+              "phrase": "Picking up something.",
+              "latency_ms": 1390.7
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "Looking down.",
+              "latency_ms": 1129.5
+            },
+            {
+              "label": "brush_hair",
+              "pred": "shoot_ball",
+              "phrase": "taking picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "talk",
+              "phrase": "writing.",
+              "latency_ms": 128.9
+            },
+            {
+              "label": "brush_hair",
+              "pred": "talk",
+              "phrase": "Talking on phone.",
+              "latency_ms": 188.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "stand",
+              "phrase": "Standing.",
+              "latency_ms": 289.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "stand",
+              "phrase": "Standing.",
+              "latency_ms": 416.6
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            }
+          ],
+          "confidence": 0.3,
+          "similarity": 0.6
+        },
+        {
+          "correct": 545,
+          "total": 1530,
+          "accuracy": 0.3562,
+          "mean_latency_ms": 735.4,
+          "p95_latency_ms": 1534.4,
+          "mean_uploads": 1.0712,
+          "skip_rate": 0.239,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 415.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1087.2
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in the mirror",
+              "latency_ms": 757.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "sit",
+              "phrase": "Sitting.",
+              "latency_ms": 650.3
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1409.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "Looking down.",
+              "latency_ms": 1129.5
+            },
+            {
+              "label": "brush_hair",
+              "pred": "shoot_ball",
+              "phrase": "taking picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "talk",
+              "phrase": "writing.",
+              "latency_ms": 128.9
+            },
+            {
+              "label": "brush_hair",
+              "pred": "talk",
+              "phrase": "Talking on phone.",
+              "latency_ms": 188.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "stand",
+              "phrase": "Standing.",
+              "latency_ms": 289.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "stand",
+              "phrase": "Standing.",
+              "latency_ms": 416.6
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            }
+          ],
+          "confidence": 0.3,
+          "similarity": 0.65
+        },
+        {
+          "correct": 587,
+          "total": 1530,
+          "accuracy": 0.3837,
+          "mean_latency_ms": 746.9,
+          "p95_latency_ms": 1534.6,
+          "mean_uploads": 1.0974,
+          "skip_rate": 0.2366,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 415.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1087.2
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in the mirror",
+              "latency_ms": 757.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "sit",
+              "phrase": "Sitting.",
+              "latency_ms": 650.3
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1409.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking at the door",
+              "latency_ms": 1131.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "catch",
+              "phrase": "hanging picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "talk",
+              "phrase": "writing.",
+              "latency_ms": 128.9
+            },
+            {
+              "label": "brush_hair",
+              "pred": "talk",
+              "phrase": "Talking on phone.",
+              "latency_ms": 188.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "stand",
+              "phrase": "Standing.",
+              "latency_ms": 289.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "stand",
+              "phrase": "Standing.",
+              "latency_ms": 416.6
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            }
+          ],
+          "confidence": 0.3,
+          "similarity": 0.7
+        },
+        {
+          "correct": 629,
+          "total": 1530,
+          "accuracy": 0.4111,
+          "mean_latency_ms": 761.6,
+          "p95_latency_ms": 1536.0,
+          "mean_uploads": 1.1327,
+          "skip_rate": 0.2349,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 415.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1087.2
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in the mirror",
+              "latency_ms": 757.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "sit",
+              "phrase": "Sitting.",
+              "latency_ms": 650.3
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1409.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking at the door",
+              "latency_ms": 1131.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "catch",
+              "phrase": "hanging picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "talk",
+              "phrase": "writing.",
+              "latency_ms": 128.9
+            },
+            {
+              "label": "brush_hair",
+              "pred": "talk",
+              "phrase": "Talking on phone.",
+              "latency_ms": 188.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "stand",
+              "phrase": "Standing.",
+              "latency_ms": 289.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "stand",
+              "phrase": "Standing.",
+              "latency_ms": 416.6
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            }
+          ],
+          "confidence": 0.3,
+          "similarity": 0.75
+        },
+        {
+          "correct": 646,
+          "total": 1530,
+          "accuracy": 0.4222,
+          "mean_latency_ms": 765.2,
+          "p95_latency_ms": 1536.5,
+          "mean_uploads": 1.1418,
+          "skip_rate": 0.2344,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 415.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1087.2
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in the mirror",
+              "latency_ms": 757.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1409.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking at the door",
+              "latency_ms": 1131.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "catch",
+              "phrase": "hanging picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "talk",
+              "phrase": "writing.",
+              "latency_ms": 128.9
+            },
+            {
+              "label": "brush_hair",
+              "pred": "talk",
+              "phrase": "Talking on phone.",
+              "latency_ms": 188.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "stand",
+              "phrase": "Standing.",
+              "latency_ms": 289.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "stand",
+              "phrase": "Standing.",
+              "latency_ms": 416.6
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            }
+          ],
+          "confidence": 0.3,
+          "similarity": 0.8
+        },
+        {
+          "correct": 528,
+          "total": 1530,
+          "accuracy": 0.3451,
+          "mean_latency_ms": 840.2,
+          "p95_latency_ms": 1618.6,
+          "mean_uploads": 1.415,
+          "skip_rate": 0.2414,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 415.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1087.2
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pullup",
+              "phrase": "pulling curtain",
+              "latency_ms": 1465.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "sit",
+              "phrase": "Sitting.",
+              "latency_ms": 650.3
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1696.5
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pick",
+              "phrase": "Picking up something.",
+              "latency_ms": 1390.7
+            },
+            {
+              "label": "brush_hair",
+              "pred": "shoot_ball",
+              "phrase": "taking picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "brush_hair",
+              "pred": "stand",
+              "phrase": "Standing.",
+              "latency_ms": 289.8
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "jump",
+              "phrase": "Flying.",
+              "latency_ms": 371.9
+            }
+          ],
+          "confidence": 0.4,
+          "similarity": 0.6
+        },
+        {
+          "correct": 597,
+          "total": 1530,
+          "accuracy": 0.3902,
+          "mean_latency_ms": 847.3,
+          "p95_latency_ms": 1618.6,
+          "mean_uploads": 1.432,
+          "skip_rate": 0.2397,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 415.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1087.2
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pullup",
+              "phrase": "pulling curtain",
+              "latency_ms": 1465.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in the mirror",
+              "latency_ms": 757.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "sit",
+              "phrase": "Sitting.",
+              "latency_ms": 650.3
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1698.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "shoot_ball",
+              "phrase": "taking picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "brush_hair",
+              "pred": "stand",
+              "phrase": "Standing.",
+              "latency_ms": 289.8
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            }
+          ],
+          "confidence": 0.4,
+          "similarity": 0.65
+        },
+        {
+          "correct": 636,
+          "total": 1530,
+          "accuracy": 0.4157,
+          "mean_latency_ms": 852.4,
+          "p95_latency_ms": 1616.8,
+          "mean_uploads": 1.4444,
+          "skip_rate": 0.2381,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 415.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1087.2
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pullup",
+              "phrase": "pulling curtain",
+              "latency_ms": 1465.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in the mirror",
+              "latency_ms": 757.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "sit",
+              "phrase": "Sitting.",
+              "latency_ms": 650.3
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1698.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "catch",
+              "phrase": "hanging picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "brush_hair",
+              "pred": "stand",
+              "phrase": "Standing.",
+              "latency_ms": 289.8
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            }
+          ],
+          "confidence": 0.4,
+          "similarity": 0.7
+        },
+        {
+          "correct": 669,
+          "total": 1530,
+          "accuracy": 0.4373,
+          "mean_latency_ms": 860.4,
+          "p95_latency_ms": 1619.5,
+          "mean_uploads": 1.4634,
+          "skip_rate": 0.2368,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 415.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1087.2
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pullup",
+              "phrase": "pulling curtain",
+              "latency_ms": 1465.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in the mirror",
+              "latency_ms": 757.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "sit",
+              "phrase": "Sitting.",
+              "latency_ms": 650.3
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1698.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "catch",
+              "phrase": "hanging picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "brush_hair",
+              "pred": "stand",
+              "phrase": "Standing.",
+              "latency_ms": 289.8
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            }
+          ],
+          "confidence": 0.4,
+          "similarity": 0.75
+        },
+        {
+          "correct": 689,
+          "total": 1530,
+          "accuracy": 0.4503,
+          "mean_latency_ms": 862.4,
+          "p95_latency_ms": 1619.5,
+          "mean_uploads": 1.4686,
+          "skip_rate": 0.2366,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 415.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1087.2
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in the mirror",
+              "latency_ms": 757.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1698.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "catch",
+              "phrase": "hanging picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "brush_hair",
+              "pred": "stand",
+              "phrase": "Standing.",
+              "latency_ms": 289.8
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "sword_exercise",
+              "phrase": "wrestling",
+              "latency_ms": 387.8
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing a ball",
+              "latency_ms": 1136.6
+            }
+          ],
+          "confidence": 0.4,
+          "similarity": 0.8
+        },
+        {
+          "correct": 553,
+          "total": 1530,
+          "accuracy": 0.3614,
+          "mean_latency_ms": 926.3,
+          "p95_latency_ms": 1669.2,
+          "mean_uploads": 1.6922,
+          "skip_rate": 0.2418,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 415.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1305.1
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pullup",
+              "phrase": "pulling curtain",
+              "latency_ms": 1465.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in mirror",
+              "latency_ms": 1060.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "sit",
+              "phrase": "Sitting.",
+              "latency_ms": 650.3
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1696.5
+            },
+            {
+              "label": "brush_hair",
+              "pred": "shake_hands",
+              "phrase": "shaking hair",
+              "latency_ms": 1573.2
+            },
+            {
+              "label": "brush_hair",
+              "pred": "shoot_ball",
+              "phrase": "taking picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "jump",
+              "phrase": "Flying.",
+              "latency_ms": 371.9
+            }
+          ],
+          "confidence": 0.5,
+          "similarity": 0.6
+        },
+        {
+          "correct": 627,
+          "total": 1530,
+          "accuracy": 0.4098,
+          "mean_latency_ms": 930.8,
+          "p95_latency_ms": 1667.4,
+          "mean_uploads": 1.7026,
+          "skip_rate": 0.2407,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 415.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1305.1
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pullup",
+              "phrase": "pulling curtain",
+              "latency_ms": 1465.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in mirror",
+              "latency_ms": 1060.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "sit",
+              "phrase": "Sitting.",
+              "latency_ms": 650.3
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1698.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "shake_hands",
+              "phrase": "shaking hair",
+              "latency_ms": 1573.2
+            },
+            {
+              "label": "brush_hair",
+              "pred": "shoot_ball",
+              "phrase": "taking picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            }
+          ],
+          "confidence": 0.5,
+          "similarity": 0.65
+        },
+        {
+          "correct": 660,
+          "total": 1530,
+          "accuracy": 0.4314,
+          "mean_latency_ms": 933.2,
+          "p95_latency_ms": 1667.4,
+          "mean_uploads": 1.7078,
+          "skip_rate": 0.2399,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 415.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1305.1
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pullup",
+              "phrase": "pulling curtain",
+              "latency_ms": 1465.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in mirror",
+              "latency_ms": 1060.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "sit",
+              "phrase": "Sitting.",
+              "latency_ms": 650.3
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1698.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "catch",
+              "phrase": "hanging picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "sword_exercise",
+              "phrase": "wrestling",
+              "latency_ms": 387.8
+            }
+          ],
+          "confidence": 0.5,
+          "similarity": 0.7
+        },
+        {
+          "correct": 684,
+          "total": 1530,
+          "accuracy": 0.4471,
+          "mean_latency_ms": 936.7,
+          "p95_latency_ms": 1669.1,
+          "mean_uploads": 1.7157,
+          "skip_rate": 0.2392,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 415.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1305.1
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pullup",
+              "phrase": "pulling curtain",
+              "latency_ms": 1465.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in mirror",
+              "latency_ms": 1060.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "sit",
+              "phrase": "Sitting.",
+              "latency_ms": 650.3
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1698.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "catch",
+              "phrase": "hanging picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "sword_exercise",
+              "phrase": "wrestling",
+              "latency_ms": 387.8
+            }
+          ],
+          "confidence": 0.5,
+          "similarity": 0.75
+        },
+        {
+          "correct": 708,
+          "total": 1530,
+          "accuracy": 0.4627,
+          "mean_latency_ms": 937.9,
+          "p95_latency_ms": 1669.1,
+          "mean_uploads": 1.7183,
+          "skip_rate": 0.239,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 415.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1305.1
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in mirror",
+              "latency_ms": 1060.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1698.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "catch",
+              "phrase": "hanging picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "sword_exercise",
+              "phrase": "wrestling",
+              "latency_ms": 387.8
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing a ball",
+              "latency_ms": 1501.2
+            },
+            {
+              "label": "cartwheel",
+              "pred": "handstand",
+              "phrase": "doing a handstand",
+              "latency_ms": 1184.2
+            }
+          ],
+          "confidence": 0.5,
+          "similarity": 0.8
+        },
+        {
+          "correct": 564,
+          "total": 1530,
+          "accuracy": 0.3686,
+          "mean_latency_ms": 991.0,
+          "p95_latency_ms": 1682.7,
+          "mean_uploads": 1.8954,
+          "skip_rate": 0.2425,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 767.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1305.1
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pullup",
+              "phrase": "pulling curtain",
+              "latency_ms": 1465.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in mirror",
+              "latency_ms": 1060.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1696.5
+            },
+            {
+              "label": "brush_hair",
+              "pred": "shake_hands",
+              "phrase": "shaking hair",
+              "latency_ms": 1573.2
+            },
+            {
+              "label": "brush_hair",
+              "pred": "shoot_ball",
+              "phrase": "taking picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "jump",
+              "phrase": "Flying.",
+              "latency_ms": 371.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "sword_exercise",
+              "phrase": "wrestling",
+              "latency_ms": 387.8
+            }
+          ],
+          "confidence": 0.6,
+          "similarity": 0.6
+        },
+        {
+          "correct": 644,
+          "total": 1530,
+          "accuracy": 0.4209,
+          "mean_latency_ms": 993.1,
+          "p95_latency_ms": 1682.7,
+          "mean_uploads": 1.9007,
+          "skip_rate": 0.2418,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 767.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1305.1
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pullup",
+              "phrase": "pulling curtain",
+              "latency_ms": 1465.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in mirror",
+              "latency_ms": 1060.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1698.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "shake_hands",
+              "phrase": "shaking hair",
+              "latency_ms": 1573.2
+            },
+            {
+              "label": "brush_hair",
+              "pred": "shoot_ball",
+              "phrase": "taking picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "sword_exercise",
+              "phrase": "wrestling",
+              "latency_ms": 387.8
+            }
+          ],
+          "confidence": 0.6,
+          "similarity": 0.65
+        },
+        {
+          "correct": 679,
+          "total": 1530,
+          "accuracy": 0.4438,
+          "mean_latency_ms": 994.6,
+          "p95_latency_ms": 1682.7,
+          "mean_uploads": 1.9039,
+          "skip_rate": 0.2412,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 767.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1305.1
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pullup",
+              "phrase": "pulling curtain",
+              "latency_ms": 1465.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in mirror",
+              "latency_ms": 1060.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1698.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "catch",
+              "phrase": "hanging picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "sword_exercise",
+              "phrase": "wrestling",
+              "latency_ms": 387.8
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 1501.0
+            }
+          ],
+          "confidence": 0.6,
+          "similarity": 0.7
+        },
+        {
+          "correct": 702,
+          "total": 1530,
+          "accuracy": 0.4588,
+          "mean_latency_ms": 995.6,
+          "p95_latency_ms": 1681.6,
+          "mean_uploads": 1.9065,
+          "skip_rate": 0.241,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 767.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1305.1
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pullup",
+              "phrase": "pulling curtain",
+              "latency_ms": 1465.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in mirror",
+              "latency_ms": 1060.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1698.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "catch",
+              "phrase": "hanging picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "sword_exercise",
+              "phrase": "wrestling",
+              "latency_ms": 387.8
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 1501.0
+            }
+          ],
+          "confidence": 0.6,
+          "similarity": 0.75
+        },
+        {
+          "correct": 723,
+          "total": 1530,
+          "accuracy": 0.4725,
+          "mean_latency_ms": 995.9,
+          "p95_latency_ms": 1681.6,
+          "mean_uploads": 1.9072,
+          "skip_rate": 0.241,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 767.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1305.1
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in mirror",
+              "latency_ms": 1060.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1698.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "catch",
+              "phrase": "hanging picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "sword_exercise",
+              "phrase": "wrestling",
+              "latency_ms": 387.8
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing a ball",
+              "latency_ms": 1501.2
+            },
+            {
+              "label": "cartwheel",
+              "pred": "handstand",
+              "phrase": "doing a handstand",
+              "latency_ms": 1408.5
+            }
+          ],
+          "confidence": 0.6,
+          "similarity": 0.8
+        },
+        {
+          "correct": 572,
+          "total": 1530,
+          "accuracy": 0.3739,
+          "mean_latency_ms": 1036.6,
+          "p95_latency_ms": 1697.0,
+          "mean_uploads": 2.0464,
+          "skip_rate": 0.2425,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 992.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1305.1
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pullup",
+              "phrase": "pulling curtain",
+              "latency_ms": 1465.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in mirror",
+              "latency_ms": 1060.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1696.5
+            },
+            {
+              "label": "brush_hair",
+              "pred": "shake_hands",
+              "phrase": "shaking hair",
+              "latency_ms": 1573.2
+            },
+            {
+              "label": "brush_hair",
+              "pred": "shoot_ball",
+              "phrase": "taking picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "jump",
+              "phrase": "Flying.",
+              "latency_ms": 371.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "sword_exercise",
+              "phrase": "wrestling",
+              "latency_ms": 387.8
+            }
+          ],
+          "confidence": 0.7,
+          "similarity": 0.6
+        },
+        {
+          "correct": 647,
+          "total": 1530,
+          "accuracy": 0.4229,
+          "mean_latency_ms": 1037.7,
+          "p95_latency_ms": 1699.4,
+          "mean_uploads": 2.049,
+          "skip_rate": 0.242,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 992.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1305.1
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pullup",
+              "phrase": "pulling curtain",
+              "latency_ms": 1465.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in mirror",
+              "latency_ms": 1060.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1698.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "shake_hands",
+              "phrase": "shaking hair",
+              "latency_ms": 1573.2
+            },
+            {
+              "label": "brush_hair",
+              "pred": "shoot_ball",
+              "phrase": "taking picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "sword_exercise",
+              "phrase": "wrestling",
+              "latency_ms": 387.8
+            }
+          ],
+          "confidence": 0.7,
+          "similarity": 0.65
+        },
+        {
+          "correct": 681,
+          "total": 1530,
+          "accuracy": 0.4451,
+          "mean_latency_ms": 1038.3,
+          "p95_latency_ms": 1699.4,
+          "mean_uploads": 2.0503,
+          "skip_rate": 0.2418,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 992.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1305.1
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pullup",
+              "phrase": "pulling curtain",
+              "latency_ms": 1465.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in mirror",
+              "latency_ms": 1060.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1698.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "catch",
+              "phrase": "hanging picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "sword_exercise",
+              "phrase": "wrestling",
+              "latency_ms": 387.8
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 1501.0
+            }
+          ],
+          "confidence": 0.7,
+          "similarity": 0.7
+        },
+        {
+          "correct": 704,
+          "total": 1530,
+          "accuracy": 0.4601,
+          "mean_latency_ms": 1038.9,
+          "p95_latency_ms": 1698.7,
+          "mean_uploads": 2.0516,
+          "skip_rate": 0.2416,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 992.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1305.1
+            },
+            {
+              "label": "brush_hair",
+              "pred": "pullup",
+              "phrase": "pulling curtain",
+              "latency_ms": 1465.4
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in mirror",
+              "latency_ms": 1060.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1698.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "catch",
+              "phrase": "hanging picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "sword_exercise",
+              "phrase": "wrestling",
+              "latency_ms": 387.8
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 1501.0
+            }
+          ],
+          "confidence": 0.7,
+          "similarity": 0.75
+        },
+        {
+          "correct": 729,
+          "total": 1530,
+          "accuracy": 0.4765,
+          "mean_latency_ms": 1039.2,
+          "p95_latency_ms": 1698.6,
+          "mean_uploads": 2.0523,
+          "skip_rate": 0.2416,
+          "examples": [
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 992.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "smile",
+              "phrase": "Smiling",
+              "latency_ms": 1305.1
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "looking in mirror",
+              "latency_ms": 1060.6
+            },
+            {
+              "label": "brush_hair",
+              "pred": "situp",
+              "phrase": "putting on glasses",
+              "latency_ms": 1698.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "catch",
+              "phrase": "hanging picture",
+              "latency_ms": 398.0
+            },
+            {
+              "label": "brush_hair",
+              "pred": "handstand",
+              "phrase": "holding a phone",
+              "latency_ms": 473.8
+            },
+            {
+              "label": "brush_hair",
+              "pred": "wave",
+              "phrase": "singing",
+              "latency_ms": 419.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing frisbee",
+              "latency_ms": 503.7
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing",
+              "latency_ms": 371.9
+            },
+            {
+              "label": "cartwheel",
+              "pred": "sword_exercise",
+              "phrase": "wrestling",
+              "latency_ms": 387.8
+            },
+            {
+              "label": "cartwheel",
+              "pred": "throw",
+              "phrase": "throwing a ball",
+              "latency_ms": 1501.2
+            },
+            {
+              "label": "cartwheel",
+              "pred": "handstand",
+              "phrase": "doing a handstand",
+              "latency_ms": 1408.5
+            }
+          ],
+          "confidence": 0.7,
+          "similarity": 0.8
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,88 @@
+\section{Implementation}
+\label{sec:implementation}
+
+\subsection{Phone browser}
+
+The client is a smartphone browser. The page is served by the laptop.
+SmolVLM-256M-Instruct runs in a Web Worker through Transformers.js~3.7.1.
+The vision encoder and the decoder use 4-bit weights. Token embeddings stay
+in 16-bit. WebGPU is selected when the browser exposes an adapter. If that
+adapter supports \texttt{shader-f16}, the 4-bit weights are stored in the
+16-bit WebGPU variant. Otherwise the worker uses the plain 4-bit variant.
+If WebGPU fails to start the model, the worker loads the same 4-bit weights
+on WASM. WASM uses up to four threads when the page is cross-origin
+isolated and the device is not an iPhone. The laptop sends
+\texttt{Cross-Origin-Opener-Policy} and
+\texttt{Cross-Origin-Embedder-Policy} so a desktop browser can take that
+threaded fallback. On the development phone, WebGPU brings one-frame
+generation under three seconds.
+
+The generation call in the browser does not return a score tensor. The
+worker therefore installs a logits processor, reads the logits of each new
+token, and turns the maximum logit into a probability with a log-sum-exp.
+The confidence reported to the page is the minimum of those probabilities,
+which is $\kappa_i$ in \eqref{eq:kappa}. Generation is greedy and stops at
+16 new tokens. The prompt is ``What is the person doing? Answer with only a
+short action phrase.'' The vision encoder resizes its input and emits a
+fixed image-token sequence, so the worker does not split the image into
+tiles, and it scales the longest side to 512 before inference. A smaller
+JPEG would be scaled back up inside the encoder.
+
+The camera path stores one JPEG per second at quality 0.72, longest side
+512, and keeps three blobs. A front camera preview is mirrored. The blob
+that enters the model is mirrored back so the encoder sees an unmirrored
+frame. While a phrase is being generated, the capture clock continues and
+the buffer keeps only the newest three frames. The next inference starts
+from the newest frame after the current call returns. Before that call,
+the page draws the frame onto a \(32\times 32\) canvas, converts it to
+grayscale, and compares it with the previous live frame by
+\eqref{eq:mad}. The page reads the threshold 10 and the leave limit 2 from
+the server health check, which returns the constants in the shared policy
+module. One-shot capture and a file chosen by the user send at most one
+image and do not update the ongoing action.
+
+\subsection{Laptop checker}
+
+The laptop serves the page with FastAPI and loads Qwen3.5-2B in bfloat16 on
+an RTX 5070 Laptop GPU. The phrase encoder,
+\texttt{bge-small-en-v1.5}, is loaded on the CPU. Mean pooling over the
+masked last hidden state, followed by $\ell_2$ normalization, produces the
+vectors whose cosine is $\tau_{\mathrm{s}}$. One still image takes a few
+hundred milliseconds after the weights are resident. A spot check with two
+frames took 1.4 seconds. Qwen generation is also greedy, with at most 32
+new tokens. Thinking mode is turned off. The image processor is capped at
+$28\times 28\times 256$ pixels, and each uploaded frame is again limited to
+a longest side of 512. A lock admits one Qwen call at a time.
+
+The check endpoint receives the phone phrase, the ongoing phrase, and zero
+to three JPEGs. With no JPEG it only compares the two phrases. A cosine of
+at least 0.70 keeps the ongoing phrase and tells the phone not to upload.
+With one or more JPEGs the server runs Qwen. The single-frame prompt
+matches the phone. The multi-frame prompt adds that the images are in time
+order and about one second apart. The reply is one of four outcomes. The
+ongoing phrase is held when Qwen stays close to it. The phone phrase is
+confirmed when Qwen stays close to the phone and not to the ongoing action.
+The phone phrase is kept when Qwen returns an empty string. Otherwise the
+screen takes Qwen's phrase. The certificate is reissued for the current
+LAN address at every server start, so the phone can open the camera over
+HTTPS. This path does not change the Wi-Fi MAC or the access point.
+
+\subsection{Evaluation harness and division of work}
+
+The still-image harness loads the labeled train split of the Bingsu human
+action set, draws a stratified sample, and writes one phrase per image with
+the same short-action prompt. Cached phrases can be matched again without
+regenerating them. The class sentences are fixed English lines of the form
+``a person is running''. The predicted class is \eqref{eq:class}. The video
+harness takes three frames from each clip, caches a SmolVLM phrase per
+frame and a Qwen phrase for each prefix length, and replays the quiet skip,
+the leave count, and the fusion rule in the same policy module the server
+uses. The phone worker is not part of either harness. Both load SmolVLM in
+float32 on CUDA, so those SmolVLM times are not the 4-bit browser times.
+
+Both members integrate the demo, the evaluation, and the report. Juntao Hu
+is responsible for the local model, the acceptance rule, the laptop
+checker, and the caption-quality evaluation. That path is running. Tianchen
+Liu is responsible for the latency predictor, the dynamic uplink budget,
+the upload scheduler, and the multi-client simulation. That path has not
+been implemented.

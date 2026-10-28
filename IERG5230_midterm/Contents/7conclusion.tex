@@ -1,0 +1,62 @@
+\FloatBarrier
+\section{Conclusion}
+\label{sec:conclusion}
+
+The midterm system writes an activity phrase on the phone and uploads a
+picture only when that phrase is unsafe. A quiet frame, with a
+\(32\times 32\) grayscale mean absolute difference below 10, keeps the
+phrase and skips the phone model. A confident phrase must leave the
+ongoing action on two frames before the buffered frames are uploaded. A
+minimum token probability below 0.5 uploads on the current frame. The
+laptop then writes its own phrase and replaces the screen text only when
+the two phrases disagree. The displayed string is the model phrase.
+
+On 60 still images the cosine matcher scores 38/60 for SmolVLM and 40/60
+for Qwen, against 27/60 and 30/60 for character overlap. Routing on phone
+confidence reaches 41/60 to 43/60. On the three-frame replay the same live
+rule scores 1640/3783 on UCF101 and 660/1530 on HMDB51, below one Qwen
+pass at 1785/3783 and 812/1530, and above SmolVLM alone at 928/3783 and
+288/1530. The quiet skip covers about a quarter to a third of the frames.
+The live rule still spends more compute than Qwen because a clip can call
+Qwen more than once after the phone model has already run. The replay does
+not include Wi-Fi delay, the phone's 4-bit runtime, or action boundaries.
+
+The networking half is the work of 1--20 November. Checker traces under
+different JPEG sizes and laptop loads have to be collected, the predictor
+$g_\theta$ has to be trained on those traces, and round-robin, a static
+checking budget, and the predictive budget in \eqref{eq:budget} have to be
+compared in a multi-client simulation. A claim about action start times
+still needs labels for those boundaries. The three-frame replay does not
+provide them.
+Table~\ref{tab:schedule} records the shift. The original plan trained the
+predictor during 4--17 October and built the scheduler during 18--31
+October. Those two blocks were spent on the sentence path and on the
+UCF101 and HMDB51 replay instead.
+
+\begin{table}[!ht]
+\caption{Schedule and midterm status}
+\label{tab:schedule}
+\centering
+\footnotesize
+\begin{tabular}{p{0.28\columnwidth}p{0.42\columnwidth}c}
+\toprule
+Dates & Work & Status \\
+\midrule
+23 Sep.--3 Oct. &
+Local inference and the Wi-Fi checking path &
+Done \\
+4--17 Oct. &
+Open phrases, cosine check, and the 60-image sample &
+Done \\
+18--31 Oct. &
+Quiet skip, two-frame leave, UCF101 and HMDB51 replay &
+Done \\
+1--12 Nov. &
+Checker traces, predictor, uplink budget, scheduler &
+Planned \\
+13--20 Nov. &
+Final evaluation, demo, report, and presentation &
+Planned \\
+\bottomrule
+\end{tabular}
+\end{table}
